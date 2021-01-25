@@ -1,0 +1,11 @@
+Unless otherwise specified, all content within the folder that contains this
+file is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 United States License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-nc-sa/3.0/us/
+
+The original code for the heliostat/sun tracking program was created by
+Gabriel Miller who released it on their website at www.cerebralmeltdown.com
+under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United
+States License. Their website was accessed on 1/24/2021 and
+Mega_SunTracking_Heliostat_Program_V098 was downloaded to be modified and
+used for part of this solar tracking project.
