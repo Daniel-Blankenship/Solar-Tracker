@@ -1,4 +1,3 @@
-
 //**************************************************************
 //  Name    : Simple Arduino Sun Tracking / Heliostat Control Program  
 //  Author  : Gabriel Miller      
@@ -15,8 +14,8 @@
   
 
 //PUT YOUR LATITUDE, LONGITUDE, AND TIME ZONE HERE
-  float latitude = 39.19;
-  float longitude = -78.16;
+  float latitude = 35.96;
+  float longitude = -83.92;
   float timezone = -5;
   
 //If you live in the northern hemisphere, put 0 here. If you live in the southern hemisphere put 1.
@@ -234,20 +233,6 @@
   altManualSpeedSwap = altManualSpeed; 
   azManualSpeedSwap = azManualSpeed;
   
-//MCP23017 SETUP CODE FROM http://tronixstuff.wordpress.com/tutorials > chapter 41
-  // setup addressing style
-  Wire.beginTransmission(0x20);
-  Wire.write((byte)0x12);
-  Wire.write((byte)0x20); // use table 1.4 addressing
-  Wire.endTransmission();
-
-  // set I/O pins to outputs
-  Wire.beginTransmission(0x20);
-  Wire.write((byte)0x00); // IODIRA register
-  Wire.write((byte)0x00); // set all of bank A to outputs
-  Wire.write((byte)0x00); // set all of bank B to outputs
-  Wire.endTransmission();
-//END MCP23017 SETUP CODE
  for (int i=0; i <= numberOfMachines - 1; i++){MachineOff(i);}//Makes sure machines are off
 
 }
@@ -430,7 +415,3 @@ void loop()
 /////////////////////////////////////////////////////////// 
 // END VOID LOOP
 /////////////////////////////////////////////////////////// 
-
-
-
-
