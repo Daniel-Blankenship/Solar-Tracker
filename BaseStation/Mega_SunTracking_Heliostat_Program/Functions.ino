@@ -104,34 +104,6 @@ float positionAfterReset(float limitAngle){
   return endAltAndAz; 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//This code calculates the angles for the heliostat (returnaltaz = 1 will return alt, 2 returns az)
-void FindHeliostatAltAndAz(float SunsAltitude, float SunsAzimuth, float targetalt, float targetaz, float &machinealt, float &machineaz){
-
-  float x,y,z,z1,z2,x1,x2,y1,y2,hyp,dist;
-  
-  z1 = sin(to_rad(SunsAltitude));
-  hyp = cos(to_rad(SunsAltitude));
-  x1 = hyp*cos(to_rad(SunsAzimuth*-1));
-  y1 = hyp*sin(to_rad(SunsAzimuth*-1));
-
-  z2 = sin(to_rad(targetalt));
-  hyp = cos(to_rad(targetalt));
-  x2 = hyp*cos(to_rad(targetaz*-1));
-  y2 = hyp*sin(to_rad(targetaz*-1));  
-  
-  x=(x1-x2)/2+x2;
-  y=(y1-y2)/2+y2;
-  z=(z1-z2)/2+z2;
-  
-  dist=sqrt(x*x+y*y+z*z);
-  if ((dist>-0.0001) && (dist <0.0001)){
-  dist=0.0001;
-  }
-
-  machinealt=to_deg(asin(z/dist));
-  machineaz=to_deg(atan2(y*-1,x));
-
-}
 
 float to_rad(float angle){
 return angle*(pi/180);

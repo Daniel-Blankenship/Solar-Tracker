@@ -30,22 +30,6 @@ float minAz, float minAlt, float maxAz, float maxAlt){
        MachinesNewAzimuth = SunsAzimuth;
     }
 
-    if (sunTrackerOrHelio == 2){//Machine Acts as Heliostat
-       FindHeliostatAltAndAz(SunsAltitude, SunsAzimuth, targetalt, targetaz, MachinesNewAltitude, MachinesNewAzimuth); 
-       if (joystickModeOnOff!=1){
-         if(FirstIterationAfterArduinoReset!=0){
-           
-          Serial.print("Target's Alt: ");
-          Serial.println(MachineTargetAlt[machineNumber],3);
-          delay(50);
-          Serial.print("Target's Az: ");
-          Serial.println(MachineTargetAz[machineNumber],3);
-          delay(50);
-
-         }
-       }
-    }
-
     if (digitalRead(WindProtectionSwitch)==HIGH){
       MachinesNewAltitude = machineAltParkAngle;
       MachinesNewAzimuth = machineAzParkAngle;

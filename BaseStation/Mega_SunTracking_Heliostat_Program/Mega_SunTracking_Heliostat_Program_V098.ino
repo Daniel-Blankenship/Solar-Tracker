@@ -19,7 +19,7 @@
   float timezone = -5;
   
 //If you live in the northern hemisphere, put 0 here. If you live in the southern hemisphere put 1.
-  int useNorthAsZero = 0;
+  int useNorthAsZero = 1;
 
 //INTERVAL BETWEEN MACHINE POSITION UPDATES
 //Lets the program know how often to update the position of the machine(s) (in seconds)
@@ -312,6 +312,14 @@ void loop()
       findSunsAltAndAzOne(year, month, day, timezone, hour, minute, second, latitude, longitude);
       SunsAltitude = SunsAltitude + (1.02/tan((SunsAltitude + 10.3/(SunsAltitude + 5.11)) * pi/180.0))/60.0;//Refraction Compensation: Meeus Pg. 105
 
+      if(useNorthAsZero==1){
+      if (SunsAzimuth<0){
+      SunsAzimuth=(SunsAzimuth+180)*-1;
+      }
+      if (SunsAzimuth>0){
+      SunsAzimuth=(SunsAzimuth-180)*-1;
+      }
+      
       if ((joystickModeOnOff!=1)){
            Serial.print("Sun's Alt: ");
            Serial.println(SunsAltitude,3);
@@ -323,21 +331,13 @@ void loop()
            Serial.println(numberOfMachines);
            delay(50);
       }
-      if(useNorthAsZero==1){
-      if (SunsAzimuth<0){
-      SunsAzimuth=(SunsAzimuth+180)*-1;
-      }
-      if (SunsAzimuth>0){
-      SunsAzimuth=(SunsAzimuth-180)*-1;
-      }
       
       //Serial.print("Sun's Azimuth Modified for Southern Hemisphere: ");
       //Serial.println(SunsAzimuth);
       }
 
   }//END Update Every X seconds
-
-    TargetControl(second, minute, hour, day, month, year, dayOfWeek);//Checks to see if the targets have been changed  
+ 
     checkJoystick();
   
   
