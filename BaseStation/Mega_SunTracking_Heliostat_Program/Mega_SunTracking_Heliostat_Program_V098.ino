@@ -312,12 +312,23 @@ void loop()
       findSunsAltAndAzOne(year, month, day, timezone, hour, minute, second, latitude, longitude);
       SunsAltitude = SunsAltitude + (1.02/tan((SunsAltitude + 10.3/(SunsAltitude + 5.11)) * pi/180.0))/60.0;//Refraction Compensation: Meeus Pg. 105
 
-      if(useNorthAsZero==1){
-      if (SunsAzimuth<0){
-      SunsAzimuth=(SunsAzimuth+180)*-1;
-      }
-      if (SunsAzimuth>0){
-      SunsAzimuth=(SunsAzimuth-180)*-1;
+      //if(useNorthAsZero==1){
+      //if (SunsAzimuth<0){
+      //SunsAzimuth=(SunsAzimuth+180)*-1;
+      //}
+      //if (SunsAzimuth>0){
+      //SunsAzimuth=(SunsAzimuth-180)*-1;
+      //}
+      
+      //Serial.print("Sun's Azimuth Modified for Southern Hemisphere: ");
+      //Serial.println(SunsAzimuth);
+      //}
+      
+      SunsAzimuth = SunsAzimuth + 180;
+      
+      if(SunsAzimuth > 360)
+      {
+        SunsAzimuth = SunsAzimuth - 360;
       }
       
       if ((joystickModeOnOff!=1)){
@@ -330,10 +341,6 @@ void loop()
            Serial.print("Number of Machines ");
            Serial.println(numberOfMachines);
            delay(50);
-      }
-      
-      //Serial.print("Sun's Azimuth Modified for Southern Hemisphere: ");
-      //Serial.println(SunsAzimuth);
       }
 
   }//END Update Every X seconds
