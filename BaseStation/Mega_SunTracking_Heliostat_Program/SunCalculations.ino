@@ -1,4 +1,3 @@
-
 void findSunsAltAndAzOne(int year, int month, int day, int timezone, int hour, int minute, int second, float latitude, float longitude){
       
         BigNumberMath::begin (calculationScale);  // initialize library // sj
